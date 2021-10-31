@@ -1,0 +1,5 @@
+fields @timestamp, @message
+| parse @message '{"app_name":* , "module_name": * "start_time": * "end_time": * "no_of_records": * "status": * "job_type": * }'  as  appname, start, end, record, status, job_type, msg
+| filter appname in ["testjob"]
+| display  appname, module,start,end,record,status,job_type,msg
+| sort @timestamp desc
